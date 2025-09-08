@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+    const { user, isAuthenticated } = useSanctumAuth();
+</script>
 <template>
     <header class="bg-white">
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
@@ -7,7 +9,7 @@
                     <span class="text-xl font-bold"> Mini-LMS </span>
                 </NuxtLink>
                 <div class="hidden lg:flex lg:gap-x-12">
-                    <NuxtLink to="/dashboard" class="text-sm font-semibold leading-6 text-gray-900"> Dashboard </NuxtLink>
+                    <NuxtLink v-if="isAuthenticated" to="/dashboard" class="text-sm font-semibold leading-6 text-gray-900"> Dashboard </NuxtLink>
                 </div>
             </div>
             <div class="flex lg:hidden">
@@ -19,11 +21,11 @@
                 </button>
             </div>
             <div class="hidden lg:flex">
-                <div class="flex items-center space-x-6">
-                    <div class="text-sm font-semibold leading-6 text-gray-900">User name</div>
+                <div v-if="isAuthenticated" class="flex items-center space-x-6">
+                    <div class="text-sm font-semibold leading-6 text-gray-900">{{ user.name }}</div>
                     <button class="text-sm font-semibold leading-6 text-gray-900">Log out &rarr;</button>
                 </div>
-                <div>
+                <div v-else>
                     <NuxtLink to="/auth/login" class="text-sm font-semibold leading-6 text-gray-900"> Log in &rarr; </NuxtLink>
                 </div>
             </div>
@@ -46,13 +48,13 @@
                 <div class="mt-6 flow-root">
                     <div class="-my-6 divide-y divide-gray-500/10">
                         <div class="space-y-2 py-6">
-                            <NuxtLink to="/dashboard" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Dashboard </NuxtLink>
+                            <NuxtLink v-if="isAuthenticated" to="/dashboard" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Dashboard </NuxtLink>
                         </div>
                         <div class="py-6">
-                            <div>
+                            <div v-if="isAuthenticated">
                                 <button class="w-full text-left -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log out</button>
                             </div>
-                            <div>
+                            <div v-else>
                                 <NuxtLink to="/auth/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Log in </NuxtLink>
                             </div>
                         </div>
