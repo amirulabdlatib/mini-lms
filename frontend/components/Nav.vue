@@ -1,13 +1,13 @@
-<script setup lang="ts"></script>
+<script setup></script>
 <template>
     <header class="bg-white">
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
             <div class="flex items-center gap-x-12">
-                <a href="#" class="-m-1.5 p-1.5">
-                    <span class="text-xl font-bold"> Product Name </span>
-                </a>
+                <NuxtLink to="/" class="-m-1.5 p-1.5">
+                    <span class="text-xl font-bold"> Mini-LMS </span>
+                </NuxtLink>
                 <div class="hidden lg:flex lg:gap-x-12">
-                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900"> Dashboard </a>
+                    <NuxtLink to="/dashboard" class="text-sm font-semibold leading-6 text-gray-900"> Dashboard </NuxtLink>
                 </div>
             </div>
             <div class="flex lg:hidden">
@@ -33,9 +33,9 @@
         <div class="lg:hidden">
             <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:ring-1 sm:ring-gray-900/10">
                 <div class="flex items-center justify-between">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="text-xl font-bold"> Product Name </span>
-                    </a>
+                    <NuxtLink to="/" class="-m-1.5 p-1.5">
+                        <span class="text-xl font-bold"> Mini-LMS </span>
+                    </NuxtLink>
                     <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
                         <span class="sr-only">Close menu</span>
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -46,14 +46,14 @@
                 <div class="mt-6 flow-root">
                     <div class="-my-6 divide-y divide-gray-500/10">
                         <div class="space-y-2 py-6">
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Dashboard </a>
+                            <NuxtLink to="/dashboard" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Dashboard </NuxtLink>
                         </div>
                         <div class="py-6">
                             <div>
                                 <button class="w-full text-left -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log out</button>
                             </div>
                             <div>
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Log in </a>
+                                <NuxtLink to="/auth/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Log in </NuxtLink>
                             </div>
                         </div>
                     </div>
