@@ -5,4 +5,10 @@ export default defineNuxtConfig({
     devServer: {
         host: "localhost",
     },
+
+    modules: ["nuxt-auth-sanctum"],
+
+    sanctum: {
+        baseUrl: "http://localhost:8000",
+    },
 });

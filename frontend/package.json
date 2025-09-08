@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "nuxt": "^3.19.1",
+    "nuxt-auth-sanctum": "^1.2.0",
     "vue": "^3.5.20",
     "vue-router": "^4.5.1"
   }
