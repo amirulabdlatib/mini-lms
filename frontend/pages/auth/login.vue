@@ -1,4 +1,7 @@
 <script setup>
+    useSeoMeta({
+        title: "Mini LMS - Login",
+    });
     const { login: loginAction } = useSanctumAuth();
     const form = reactive({
         email: "admin@example.com",
