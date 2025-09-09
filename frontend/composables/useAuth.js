@@ -15,8 +15,20 @@ export const useAuth = () => {
         }
     }
 
+    async function updateProfile(form) {
+        try {
+            return await sanctumFetch("/user/profile-information", {
+                method: "PUT",
+                body: form,
+            });
+        } catch (error) {
+            errors.value = error.data.errors;
+        }
+    }
+
     return {
         register,
+        updateProfile,
         errors,
     };
 };

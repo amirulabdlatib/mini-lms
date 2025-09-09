@@ -7,18 +7,19 @@
         middleware: ["sanctum:auth"],
     });
 
+    const { user } = useSanctumAuth();
+
     const { updateProfile, errors } = useAuth();
     const { refreshIdentity } = useSanctumAuth();
 
     const form = reactive({
-        name: "",
-        email: "",
+        name: user.value.name,
+        email: user.value.email,
     });
 
     const submit = async () => {
         await updateProfile(form);
         await refreshIdentity();
-        await navigateTo("/dashboard");
     };
 </script>
 
