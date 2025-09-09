@@ -7,7 +7,8 @@
         middleware: ["sanctum:guest"],
     });
 
-    const sanctumFetch = useSanctumClient();
+    const { register: registerAction } = useAuth();
+    const { refreshIdentity } = useSanctumAuth();
 
     const form = reactive({
         name: "",
@@ -17,10 +18,9 @@
     });
 
     const register = async () => {
-        await sanctumFetch("/register", {
-            method: "POST",
-            body: form,
-        });
+        await registerAction(form);
+        await refreshIdentity();
+        await navigateTo("/dashboard");
     };
 </script>
 
