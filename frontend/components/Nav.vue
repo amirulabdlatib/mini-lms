@@ -28,6 +28,7 @@
             <div class="hidden lg:flex">
                 <div v-if="isAuthenticated" class="flex items-center space-x-6">
                     <div class="text-sm font-semibold leading-6 text-gray-900">{{ user?.name }}</div>
+                    <NuxtLink to="/auth/account" class="text-sm font-semibold leading-6 text-gray-900">Account</NuxtLink>
                     <button @click="logout" class="text-sm font-semibold leading-6 text-gray-900">Log out &rarr;</button>
                 </div>
                 <div v-else class="space-x-5">
@@ -59,6 +60,7 @@
                         </div>
                         <div class="py-6">
                             <div v-if="isAuthenticated">
+                                <NuxtLink to="/auth/account" class="w-full text-left -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Account</NuxtLink>
                                 <button @click="logout" class="w-full text-left -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log out</button>
                             </div>
                             <div v-else>
