@@ -1,5 +1,10 @@
 <script setup lang="ts">
-    const { user, isAuthenticated } = useSanctumAuth<User>();
+    const { user, isAuthenticated, logout: logoutAction } = useSanctumAuth<User>();
+
+    const logout = async () => {
+        await logoutAction();
+        await navigateTo("/auth/login");
+    };
 </script>
 <template>
     <header class="bg-white shadow-lg">
@@ -23,7 +28,7 @@
             <div class="hidden lg:flex">
                 <div v-if="isAuthenticated" class="flex items-center space-x-6">
                     <div class="text-sm font-semibold leading-6 text-gray-900">{{ user?.name }}</div>
-                    <button class="text-sm font-semibold leading-6 text-gray-900">Log out &rarr;</button>
+                    <button @click="logout" class="text-sm font-semibold leading-6 text-gray-900">Log out &rarr;</button>
                 </div>
                 <div v-else>
                     <NuxtLink to="/auth/login" class="text-sm font-semibold leading-6 text-gray-900"> Log in &rarr; </NuxtLink>
@@ -52,7 +57,7 @@
                         </div>
                         <div class="py-6">
                             <div v-if="isAuthenticated">
-                                <button class="w-full text-left -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log out</button>
+                                <button @click="logout" class="w-full text-left -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log out</button>
                             </div>
                             <div v-else>
                                 <NuxtLink to="/auth/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Log in </NuxtLink>
