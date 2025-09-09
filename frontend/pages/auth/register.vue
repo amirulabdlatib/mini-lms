@@ -83,8 +83,8 @@
                 </div>
             </form>
             <p class="mt-10 text-center text-sm text-gray-500">
-                Not signed up?
-                <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register</a>
+                Already signed up?
+                <NuxtLink to="/auth/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Login</NuxtLink>
             </p>
         </div>
     </div>

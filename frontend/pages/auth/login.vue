@@ -1,4 +1,6 @@
 <script setup>
+    import { RouterLink } from "vue-router";
+
     useSeoMeta({
         title: "Login",
     });
@@ -59,7 +61,7 @@
             </form>
             <p class="mt-10 text-center text-sm text-gray-500">
                 Not signed up?
-                <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register</a>
+                <NuxtLink to="/auth/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register</NuxtLink>
             </p>
         </div>
     </div>
