@@ -19,6 +19,7 @@ export default defineNuxtConfig({
         redirect: {
             onAuthOnly: "auth/login",
             onGuestOnly: "/dashboard",
+            onLogout: "auth/login",
         },
     },
 

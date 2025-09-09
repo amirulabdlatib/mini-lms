@@ -3,7 +3,7 @@
 
     const logout = async () => {
         await logoutAction();
-        await navigateTo("/auth/login");
+        // await navigateTo("/auth/login");
     };
 </script>
 <template>
