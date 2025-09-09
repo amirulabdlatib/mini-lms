@@ -1,6 +1,6 @@
 <script setup>
     useSeoMeta({
-        title: "Mini LMS - Home",
+        title: "Home",
     });
 </script>
 

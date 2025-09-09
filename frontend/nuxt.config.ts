@@ -17,4 +17,17 @@ export default defineNuxtConfig({
     sanctum: {
         baseUrl: "http://localhost:8000",
     },
+
+    app: {
+        head: {
+            title: "Mini LMS",
+            titleTemplate: "%s - Mini LMS",
+            meta: [
+                {
+                    name: "description",
+                    content: "A minimal learning management system",
+                },
+            ],
+        },
+    },
 });
