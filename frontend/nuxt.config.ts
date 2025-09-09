@@ -17,9 +17,9 @@ export default defineNuxtConfig({
     sanctum: {
         baseUrl: "http://localhost:8000",
         redirect: {
-            onAuthOnly: "auth/login",
+            onAuthOnly: "/auth/login",
             onGuestOnly: "/dashboard",
-            onLogout: "auth/login",
+            onLogout: "/auth/login",
         },
     },
 
