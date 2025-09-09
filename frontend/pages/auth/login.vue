@@ -2,6 +2,11 @@
     useSeoMeta({
         title: "Login",
     });
+
+    definePageMeta({
+        middleware: ["sanctum:guest"],
+    });
+
     const { login: loginAction } = useSanctumAuth();
     const form = reactive({
         email: "admin@example.com",
