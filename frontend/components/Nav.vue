@@ -30,8 +30,10 @@
                     <div class="text-sm font-semibold leading-6 text-gray-900">{{ user?.name }}</div>
                     <button @click="logout" class="text-sm font-semibold leading-6 text-gray-900">Log out &rarr;</button>
                 </div>
-                <div v-else>
-                    <NuxtLink to="/auth/login" class="text-sm font-semibold leading-6 text-gray-900"> Log in &rarr; </NuxtLink>
+                <div v-else class="space-x-5">
+                    <NuxtLink to="/auth/register" class="text-sm font-semibold leading-6 text-gray-900"> Register </NuxtLink>
+
+                    <NuxtLink to="/auth/login" class="text-sm font-semibold leading-6 text-gray-900"> Log in </NuxtLink>
                 </div>
             </div>
         </nav>
