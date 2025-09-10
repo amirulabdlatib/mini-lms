@@ -15,7 +15,7 @@
             </div>
 
             <!-- Students Table -->
-            <div v-else-if="students && students.length" class="overflow-x-auto">
+            <div v-else-if="students.length > 0" class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
