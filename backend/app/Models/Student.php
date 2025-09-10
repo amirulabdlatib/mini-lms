@@ -19,7 +19,7 @@ class Student extends Model
 
     protected $with = [
         'section',
-        'classes',
+        'class',
     ];
 
     public function class()
