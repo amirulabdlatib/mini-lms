@@ -10,7 +10,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::paginate(10);
+        $students = Student::all();
 
         return StudentResource::collection($students);
     }
