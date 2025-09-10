@@ -7,6 +7,12 @@
     definePageMeta({
         middleware: ["sanctum:auth"],
     });
+
+    const { classes, fetchClasses } = useClass();
+
+    onMounted(async () => {
+        await fetchClasses();
+    });
 </script>
 
 <template>
@@ -58,18 +64,8 @@
                                     name="class"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none cursor-pointer transition-colors">
                                     <option value="">Select a Class</option>
-                                    <option value="1">Class 1</option>
-                                    <option value="2">Class 2</option>
-                                    <option value="3">Class 3</option>
-                                    <option value="4">Class 4</option>
-                                    <option value="5">Class 5</option>
+                                    <option v-for="item in classes" :key="item.id" :value="item.id">{{ item.name }}</option>
                                 </select>
-                                <!-- Dropdown Arrow -->
-                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </div>
                             </div>
                         </div>
 
@@ -87,12 +83,6 @@
                                     <option value="C">Section C</option>
                                     <option value="D">Section D</option>
                                 </select>
-                                <!-- Dropdown Arrow -->
-                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </div>
                             </div>
                         </div>
                     </div>
