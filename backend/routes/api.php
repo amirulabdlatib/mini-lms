@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,5 +10,5 @@ Route::middleware(['auth:sanctum'])->group(function(){
         return UserResource::make($request->user());
     });
 
-    
+    Route::apiResource('students',StudentController::class);
 });
