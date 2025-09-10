@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStudentRequest;
 use App\Http\Resources\StudentResource;
 use App\Models\Student;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class StudentController extends Controller
 {
@@ -13,5 +14,14 @@ class StudentController extends Controller
         $students = Student::all();
 
         return StudentResource::collection($students);
+    }
+
+    public function store(StoreStudentRequest $request)
+    {
+        Student::create($request->validated());
+
+        return response()->json([
+            'message' => 'Student created successfully.',
+        ],Response::HTTP_CREATED);
     }
 }
