@@ -12,7 +12,7 @@
 </script>
 
 <template>
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4">
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <!-- Header -->
             <div class="bg-gray-50 px-6 py-4 border-b flex justify-between">
