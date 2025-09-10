@@ -1,9 +1,27 @@
+<script setup>
+    const { students, error, fetchStudents } = useStudent();
+
+    onMounted(async () => {
+        await fetchStudents();
+    });
+
+    useSeoMeta({
+        title: "Students",
+        description: "View and manage students in the system",
+    });
+</script>
+
 <template>
     <div class="container mx-auto px-4 py-8">
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <!-- Header -->
-            <div class="bg-gray-50 px-6 py-4 border-b">
+            <div class="bg-gray-50 px-6 py-4 border-b flex justify-between">
                 <h1 class="text-2xl font-bold text-gray-900">Students</h1>
+                <NuxtLink
+                    to="/students/create"
+                    class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition">
+                    + Add Student
+                </NuxtLink>
             </div>
 
             <!-- Error State -->
@@ -69,19 +87,3 @@
         </div>
     </div>
 </template>
-
-<script setup>
-    // Use the student composable
-    const { students, error, fetchStudents } = useStudent();
-
-    // Fetch students when component mounts
-    onMounted(async () => {
-        await fetchStudents();
-    });
-
-    // Set page meta
-    useSeoMeta({
-        title: "Students - Management System",
-        description: "View and manage students in the system",
-    });
-</script>
