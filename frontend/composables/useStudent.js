@@ -1,12 +1,11 @@
 export const useStudent = () => {
     const students = ref([]);
     const error = ref({});
+    const sanctumFetch = useSanctumClient();
 
     const fetchStudents = async () => {
         try {
             error.value = {};
-
-            const sanctumFetch = useSanctumClient();
             const response = await sanctumFetch("/api/students");
             students.value = response;
         } catch (err) {
