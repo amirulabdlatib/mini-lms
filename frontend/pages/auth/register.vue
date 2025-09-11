@@ -18,10 +18,14 @@
     });
 
     const register = async () => {
-        await registerAction(form);
-        console.log(errors.value);
-        await refreshIdentity();
-        await navigateTo("/dashboard");
+        try {
+            await registerAction(form);
+            console.log(errors.value);
+            await refreshIdentity();
+            await navigateTo("/dashboard");
+        } catch (error) {
+            console.log("Register error: " + error);
+        }
     };
 </script>
 

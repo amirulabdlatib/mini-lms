@@ -12,6 +12,7 @@ export const useAuth = () => {
             if (error.statusCode == 422) {
                 errors.value = error.data.errors;
             }
+            throw error;
         }
     }
 
