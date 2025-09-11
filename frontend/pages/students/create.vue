@@ -9,6 +9,21 @@
     });
 
     const { classes, fetchClasses } = useClass();
+    const { sections, fetchSections } = useSection();
+
+    const form = reactive({
+        name: "",
+        email: "",
+        class_id: "",
+        section_id: "",
+    });
+
+    watch(
+        () => form.class_id,
+        async (newValue) => {
+            await fetchSections(newValue);
+        }
+    );
 
     onMounted(async () => {
         await fetchClasses();
@@ -37,7 +52,8 @@
                                 id="name"
                                 name="name"
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                                placeholder="Enter student name" />
+                                placeholder="Enter student name"
+                                v-model="form.name" />
                             <p class="mt-1 text-sm text-red-600">This field is required</p>
                         </div>
 
@@ -49,7 +65,8 @@
                                 id="email"
                                 name="email"
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                                placeholder="Enter email address" />
+                                placeholder="Enter email address"
+                                v-model="form.email" />
                         </div>
                     </div>
 
@@ -60,6 +77,7 @@
                             <label for="class" class="block text-sm font-medium text-gray-700 mb-2"> Class </label>
                             <div class="relative">
                                 <select
+                                    v-model="form.class_id"
                                     id="class"
                                     name="class"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none cursor-pointer transition-colors">
@@ -74,14 +92,12 @@
                             <label for="section" class="block text-sm font-medium text-gray-700 mb-2"> Section </label>
                             <div class="relative">
                                 <select
+                                    v-model="form.section_id"
                                     id="section"
                                     name="section"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none cursor-pointer transition-colors">
                                     <option value="">Select a Section</option>
-                                    <option value="A">Section A</option>
-                                    <option value="B">Section B</option>
-                                    <option value="C">Section C</option>
-                                    <option value="D">Section D</option>
+                                    <option v-for="section in sections" :value="section.id" :key="section.id">{{ section.name }}</option>
                                 </select>
                             </div>
                         </div>

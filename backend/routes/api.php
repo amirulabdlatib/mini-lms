@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 
 Route::middleware(['auth:sanctum'])->group(function(){
@@ -13,4 +14,5 @@ Route::middleware(['auth:sanctum'])->group(function(){
 
     Route::apiResource('students',StudentController::class);
     Route::get('classes',[ClassController::class,'index']);
+    Route::get('sections',[SectionController::class,'index']);
 });
