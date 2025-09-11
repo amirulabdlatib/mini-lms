@@ -1,5 +1,5 @@
 <script setup>
-    const { students, error, fetchStudents } = useStudent();
+    const { students, errors, fetchStudents } = useStudent();
 
     onMounted(async () => {
         await fetchStudents();
@@ -25,7 +25,7 @@
             </div>
 
             <!-- Error State -->
-            <div v-if="error.message" class="p-6">
+            <div v-if="errors.message" class="p-6">
                 <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
                     <strong class="font-bold">Error:</strong>
                     <span class="block sm:inline ml-1">Fetching data</span>

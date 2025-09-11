@@ -10,6 +10,7 @@
 
     const { classes, fetchClasses } = useClass();
     const { sections, fetchSections } = useSection();
+    const { createStudent, errors } = useStudent();
 
     const form = reactive({
         name: "",
@@ -17,6 +18,15 @@
         class_id: "",
         section_id: "",
     });
+
+    const submit = async () => {
+        try {
+            await createStudent(form);
+            await navigateTo("/students");
+        } catch (error) {
+            console.log("Student creation failed:", error);
+        }
+    };
 
     watch(
         () => form.class_id,
@@ -41,7 +51,7 @@
                 </div>
 
                 <!-- Form -->
-                <form class="space-y-6">
+                <form class="space-y-6" @submit.prevent="submit">
                     <!-- Name and Email Row -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Name Field -->
@@ -54,7 +64,7 @@
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                                 placeholder="Enter student name"
                                 v-model="form.name" />
-                            <p class="mt-1 text-sm text-red-600">This field is required</p>
+                            <p v-if="errors.name" class="mt-1 text-sm text-red-600">{{ errors.name[0] }}</p>
                         </div>
 
                         <!-- Email Field -->
@@ -67,6 +77,7 @@
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                                 placeholder="Enter email address"
                                 v-model="form.email" />
+                            <p v-if="errors.email" class="mt-1 text-sm text-red-600">{{ errors.email[0] }}</p>
                         </div>
                     </div>
 
@@ -84,6 +95,7 @@
                                     <option value="">Select a Class</option>
                                     <option v-for="item in classes" :key="item.id" :value="item.id">{{ item.name }}</option>
                                 </select>
+                                <p v-if="errors.class_id" class="mt-1 text-sm text-red-600">{{ errors.class_id[0] }}</p>
                             </div>
                         </div>
 
@@ -99,6 +111,7 @@
                                     <option value="">Select a Section</option>
                                     <option v-for="section in sections" :value="section.id" :key="section.id">{{ section.name }}</option>
                                 </select>
+                                <p v-if="errors.section_id" class="mt-1 text-sm text-red-600">{{ errors.section_id[0] }}</p>
                             </div>
                         </div>
                     </div>
