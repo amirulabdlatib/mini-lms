@@ -9,6 +9,19 @@
         title: "Students",
         description: "View and manage students in the system",
     });
+
+    const { deleteStudent: deleteAction } = useStudent();
+
+    const deleteStudent = async (id) => {
+        try {
+            if (confirm("Are you sure to delete this student?")) {
+                await deleteAction(id);
+                students.value = students.value.filter((student) => student.id !== id);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 </script>
 
 <template>
@@ -68,7 +81,7 @@
                             </td>
                             <td>
                                 <NuxtLink :to="`students/${student.id}/edit`" class="text-indigo-600 hover:text-indigo-900"> Edit </NuxtLink>
-                                <button class="text-indigo-600 hover:text-indigo-900">Delete</button>
+                                <button @click="deleteStudent(student.id)" class="text-indigo-600 hover:text-indigo-900">Delete</button>
                             </td>
                         </tr>
                     </tbody>
