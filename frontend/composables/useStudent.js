@@ -43,11 +43,28 @@ export const useStudent = () => {
         }
     };
 
+    const updateStudent = async (id, form) => {
+        try {
+            const response = await sanctumFetch("/api/students/" + id, {
+                method: "PUT",
+                body: form,
+            });
+
+            return response;
+        } catch (error) {
+            if (error.statusCode == 422) {
+                errors.value = error.data.errors;
+            }
+            throw error;
+        }
+    };
+
     return {
         students,
         errors,
         fetchStudents,
         createStudent,
         getStudent,
+        updateStudent,
     };
 };

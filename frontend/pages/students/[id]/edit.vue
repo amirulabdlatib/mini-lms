@@ -10,10 +10,8 @@
 
     const { classes, fetchClasses } = useClass();
     const { sections, fetchSections } = useSection();
-    const { createStudent, errors, getStudent } = useStudent();
+    const { updateStudent, errors, getStudent } = useStudent();
     const route = useRoute();
-
-    console.log(route.params.id);
 
     const form = reactive({
         name: "",
@@ -24,7 +22,8 @@
 
     const submit = async () => {
         try {
-            await createStudent(form);
+            const id = route.params.id;
+            await updateStudent(id, form);
             await navigateTo("/students");
         } catch (error) {
             console.log("Student creation failed:", error);

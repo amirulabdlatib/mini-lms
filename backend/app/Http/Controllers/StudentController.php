@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 use App\Http\Resources\StudentResource;
 use App\Models\Student;
 use Illuminate\Http\Response;
@@ -28,5 +29,14 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         return StudentResource::make($student);
+    }
+
+    public function update(UpdateStudentRequest $request, Student $student)
+    {
+        $student->update($request->validated());
+
+        return response()->json([
+            'message' => 'Student details updated successfully'
+        ],200);
     }
 }
