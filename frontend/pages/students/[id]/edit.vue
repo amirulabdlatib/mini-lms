@@ -10,7 +10,10 @@
 
     const { classes, fetchClasses } = useClass();
     const { sections, fetchSections } = useSection();
-    const { createStudent, errors } = useStudent();
+    const { createStudent, errors, getStudent } = useStudent();
+    const route = useRoute();
+
+    console.log(route.params.id);
 
     const form = reactive({
         name: "",
@@ -37,6 +40,15 @@
 
     onMounted(async () => {
         await fetchClasses();
+        try {
+            let response = await getStudent(route.params.id);
+            form.name = response.name;
+            form.email = response.email;
+            form.class_id = response.class.id;
+            form.section_id = response.section.id;
+        } catch (error) {
+            console.log(error);
+        }
     });
 </script>
 

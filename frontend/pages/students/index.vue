@@ -43,6 +43,7 @@
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Class</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Section</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created At</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -64,6 +65,10 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ student.created_at }}
+                            </td>
+                            <td>
+                                <NuxtLink :to="`students/${student.id}/edit`" class="text-indigo-600 hover:text-indigo-900"> Edit </NuxtLink>
+                                <button class="text-indigo-600 hover:text-indigo-900">Delete</button>
                             </td>
                         </tr>
                     </tbody>

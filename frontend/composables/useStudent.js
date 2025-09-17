@@ -34,10 +34,20 @@ export const useStudent = () => {
         }
     };
 
+    const getStudent = async (id) => {
+        try {
+            let response = await sanctumFetch("/api/students/" + id);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    };
+
     return {
         students,
         errors,
         fetchStudents,
         createStudent,
+        getStudent,
     };
 };

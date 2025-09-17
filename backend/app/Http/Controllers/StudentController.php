@@ -24,4 +24,9 @@ class StudentController extends Controller
             'message' => 'Student created successfully.',
         ],Response::HTTP_CREATED);
     }
+
+    public function show(Student $student)
+    {
+        return StudentResource::make($student);
+    }
 }
