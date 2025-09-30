@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     modules: ["nuxt-auth-sanctum"],
 
     sanctum: {
-        baseUrl: "http://localhost:8000",
+        baseUrl: process.env.NUXT_SANCTUM_BASE_URL,
         redirect: {
             onAuthOnly: "/auth/login",
             onGuestOnly: "/dashboard",
